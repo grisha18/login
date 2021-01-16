@@ -6,6 +6,12 @@
   height: 40vmin;
   pointer-events: none;
 }
+.login{
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  gap: 1em;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -36,3 +42,5 @@
     transform: rotate(360deg);
   }
 }
+
+
