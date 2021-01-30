@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import {useState} from 'react';
+import React from 'react';
 
 
 const Login =({login, registration})=>{
@@ -18,17 +19,41 @@ const Login =({login, registration})=>{
   } 
   // https://learn.javascript.ru/promise
 
-  return(
-    <div className="login">
-      <input type="text" placeholder="login"  value={loginValue} onChange={changeLogin}></input>
-      <input type="password" placeholder="password" value={passwordValue} onChange={changePassword}></input>
+  return(  
+    <div>
+      <div className="login">
+        <input type="text" placeholder="login"  value={loginValue} onChange={changeLogin}></input>
+        <input type="password" placeholder="password" value={passwordValue} onChange={changePassword}></input>
+ 
 
-    {/* здесь будет вызов функции, которая будет ждать и давать ответ через секунду
-    если grisha grisha - то ок,
-    если нет - то еррор */}
-      <button onClick={(e)=>{console.log(`login is ${loginValue}, password ${passwordValue}`) } }>{login}</button>
-      <button>{registration}</button>
+     
+        let promise = new Promise((resolve, reject)   {
+
+          setTimeout('promise', 2000)
+          });
+
+          promise
+          .then(
+            result  {
+              alert("все ок")
+            },
+            error  {
+              alert("ошибка")
+            }
+          );
+          resolve();
+                              
+                
+
+      {/* здесь будет вызов функции, которая будет ждать и давать ответ через секунду
+      если grisha grisha - то ок,
+      если нет - то еррор */}
+             
+        <button onClick={(e)=>{console.log(`login is ${loginValue}, password ${passwordValue}`) } }>{login}</button>
+        <button>{registration}</button>
+      </div>
     </div>
+    
   )
   
 }
