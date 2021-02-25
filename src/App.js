@@ -15,7 +15,7 @@ const Login =({login, registration})=>{
     if(e.target.value.length && passwordValue.length){
       setDisabledvalue(false)
     }
-    else{
+    else{ 
       setDisabledvalue(true)
     }
 
@@ -45,11 +45,32 @@ const Login =({login, registration})=>{
         else{
           reject("error")
         }
-    
+        
       } ,2000 )
 
     }  ) 
   }
+
+
+  const Login = (login, password) =>{
+    return new Promise(  (resolve, reject)=>{
+
+      setTimeout( ()=>{
+        if (password = 'grisha') {
+          resolve("Кнопка разблокировалась")
+        }
+        else{
+          reject("error")
+        }
+        
+      } ,2000 )
+
+    }  ) 
+  }
+
+
+
+  
 
   // когда промис разрешился (удачно или с ошибкой), надо разблокировать кнопку
   // если неудачно, то вывести на экран
@@ -57,6 +78,11 @@ const Login =({login, registration})=>{
   // при ошибке стейт меняется - задается текст ошибки
   // если всё сделаете, выводить ошибки логин неправильный или пароль неправильный
   // для этого разделить условие проверки на две проверки
+
+
+
+
+
 
 
 
@@ -72,6 +98,8 @@ const Login =({login, registration})=>{
              
 
              {/* сюда нужен стейт, дизэйблд */}
+             <span disabled={disabledValue} onClick={(e)=>{ setDisabledvalue(false); Login(loginValue, passwordValue).then((result)=>console.log(result)).catch(e => console.log(e))} }>{login}</span>
+             
         <button disabled={disabledValue} onClick={(e)=>{ setDisabledvalue(true); doLogin(loginValue, passwordValue).then((result)=>console.log(result)).catch(e => console.log(e))} }>{login}</button>
         <button>{registration}</button>
       </div>
